@@ -42,17 +42,17 @@ $(function () {
                 console.log("onjuist");
                 temporaryCards = [];
                 console.log(temporaryCards);
-                setTimeout(wrongCard, 1000);
-
+                $(".temporary").addClass("wrong").effect("shake"); 
+                setTimeout(resetCard, 2000);
             }
-        }s
+        }
 
-        function wrongCard() {
-            $(".temporary").addClass("wrong").removeClass("temporary").effect("shake"); //shake
+        function resetCard() {
+            $(".wrong").removeClass("wrong temporary");
         }
 
         function goodCard() {
-            $(".temporary").removeClass("temporary").addClass("good").effect("explode"); //shake
+            $(".temporary").removeClass("temporary").addClass("good").effect("explode"); 
         }
 
         //reload page to restart game
