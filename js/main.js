@@ -15,7 +15,11 @@ $(function () {
 
         //give card the color green when its selected
         $(".card").on("click", function () {
-            $(this).addClass("temporary");
+
+            if (!$(this).hasClass("temporary") && temporaryCards.length <= 1) {
+                $(this).addClass("temporary");
+            }
+
             $(this).find(".show").removeClass("show");
 
             const value = $(this).data("card");
@@ -24,7 +28,6 @@ $(function () {
 
             if (temporaryCards.length == 2) {
                 checkCards();
-
             }
         });
 
@@ -32,27 +35,22 @@ $(function () {
             const value = $(this).data("card");
 
             if (temporaryCards[0] == temporaryCards[1]) {
-                console.log("juist");
-                temporaryCards = [];
-                console.log(temporaryCards);
+
                 setTimeout(goodCard, 1000);
-
-
             } else {
-                console.log("onjuist");
-                temporaryCards = [];
-                console.log(temporaryCards);
-                $(".temporary").addClass("wrong").effect("shake"); 
+                $(".temporary").addClass("wrong").effect("shake");
                 setTimeout(resetCard, 2000);
             }
         }
 
         function resetCard() {
             $(".wrong").removeClass("wrong temporary");
+            temporaryCards = [];
         }
 
         function goodCard() {
-            $(".temporary").removeClass("temporary").addClass("good").effect("explode"); 
+            $(".temporary").removeClass("temporary").addClass("good").effect("explode");
+            temporaryCards = [];
         }
 
         //reload page to restart game
