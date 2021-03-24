@@ -1,23 +1,11 @@
 $(function () {
     let temporaryCards = [];
-    let score = 0;
+    let cardMoves = 0;
     let aantalGoed = 0;
 
     function memoryGame() {
 
-        function score () {
-            if (score <= 7) {
-                $(".star-3").css("background-color", "grey");
-            }
-        }
-
-        let sec = 0;
-        function pad ( val ) { return val > 9 ? val : "0" + val; }
-
-        setInterval( function(){
-            $("#seconds").html(pad(++sec%60));
-            $("#minutes").html(pad(parseInt(sec/60,10)));
-        }, 1000);   
+  
         
         const cards = ["bxl-tux", "bxl-microsoft", "bxl-wikipedia", "bxl-jquery", "bxl-gitlab", "bxl-codepen",
             "bxl-stack-overflow", "bxl-github", "bxl-tux", "bxl-microsoft", "bxl-wikipedia", "bxl-jquery", "bxl-gitlab",
@@ -30,8 +18,31 @@ $(function () {
             $(".row").append("<div class='col-md-3'><div class='card' data-card='" + item + "'>" + "<i class='show bx " + item + "'>" + "</div></div>");
         });
 
+        
+        function moves () {
+            if (cardMoves == 16) {
+                $(".star-3").css("color", "grey");
+            } else if (cardMoves == 25) {
+                $(".star-2, .star-3").css("color", "grey");
+            } else if (cardMoves == 35) {
+                $(".star-1, .star-2 .star-3").css("color", "grey");
+            }
+        }
+
         //give card the color green when its selected
         $(".card").on("click", function () {
+            cardMoves++;
+            moves();
+
+            if (cardMoves == 1) {
+                let sec = 0;
+                function pad ( val ) { return val > 9 ? val : "0" + val; }
+        
+                setInterval( function(){
+                    $("#seconds").html(pad(++sec%60));
+                    $("#minutes").html(pad(parseInt(sec/60,10)));
+                }, 1000);   
+            }
 
             if (!$(this).hasClass("temporary") && temporaryCards.length <= 1) {
                 $(this).addClass("temporary");
@@ -47,8 +58,8 @@ $(function () {
                 }
             }
 
-        
         });
+
 
         function checkCards() {
             const value = $(this).data("card");
@@ -84,7 +95,7 @@ $(function () {
         function finished () {
             if (aantalGoed == 8) {
                 console.log("finished");
-                document.location.href="https://google.nl";
+                document.location.href="klaar.html";
 
             }
         }

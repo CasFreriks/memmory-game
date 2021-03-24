@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script src="js/jquery.fireworks.js"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <style>
+        body {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 25vh;
+        }
+
+        h1 {
+            width:100%;
+            text-align:center;
+            color:black;
+            font-family: 'Righteous', cursive;
+            position: absolute;
+            z-index:111;
+        }
+
+        .modal {
+            background:rgba(255,255,255, 0.9);
+            width:500px;
+            height:500px;
+            position: absolute;
+            z-index:111;
+            border-radius:5px;
+        }
+
+        a {
+            text-decoration: none;
+            color:black;
+            width: 100%;
+            text-align:center;
+            position: absolute;
+            top:20vh;
+            font-family: "Roboto", sans-serif;
+        }
+
+        a:hover {
+            color:grey;
+        }
+
+        
+    </style>
+</head>
+<body>
+    
+<div class="modal">
+    <h1>Je hebt het spel uitgespeeld!</h1>
+    <a href="index.html">Begin opnieuw</a>
+</div>
+
+<div class="demo">
+</div>
+
+<script>
+$('.demo').fireworks({ sound: true, opacity: 0.9, width: '100%', height: '100%' });
+</script>
+
+    
+</body>
+</html>
