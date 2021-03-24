@@ -5,8 +5,6 @@ $(function () {
 
     function memoryGame() {
 
-  
-        
         const cards = ["bxl-tux", "bxl-microsoft", "bxl-wikipedia", "bxl-jquery", "bxl-gitlab", "bxl-codepen",
             "bxl-stack-overflow", "bxl-github", "bxl-tux", "bxl-microsoft", "bxl-wikipedia", "bxl-jquery", "bxl-gitlab",
             "bxl-codepen", "bxl-stack-overflow", "bxl-github"];
@@ -18,8 +16,7 @@ $(function () {
             $(".row").append("<div class='col-md-3'><div class='card' data-card='" + item + "'>" + "<i class='show bx " + item + "'>" + "</div></div>");
         });
 
-        
-        function moves () {
+        function moves() {
             if (cardMoves == 16) {
                 $(".star-3").css("color", "grey");
             } else if (cardMoves == 25) {
@@ -36,12 +33,12 @@ $(function () {
 
             if (cardMoves == 1) {
                 let sec = 0;
-                function pad ( val ) { return val > 9 ? val : "0" + val; }
-        
-                setInterval( function(){
-                    $("#seconds").html(pad(++sec%60));
-                    $("#minutes").html(pad(parseInt(sec/60,10)));
-                }, 1000);   
+                function pad(val) { return val > 9 ? val : "0" + val; }
+
+                setInterval(function () {
+                    $("#seconds").html(pad(++sec % 60));
+                    $("#minutes").html(pad(parseInt(sec / 60, 10)));
+                }, 1000);
             }
 
             if (!$(this).hasClass("temporary") && temporaryCards.length <= 1) {
@@ -50,16 +47,15 @@ $(function () {
                 $(this).find(".show").removeClass("show");
 
                 const value = $(this).data("card");
-    
+
                 temporaryCards.push(value); //als er een item is aangeklikt pushed de functie hem erin, de value komt van de data-card
-    
+
                 if (temporaryCards.length == 2) { //als de temp array gelijk is aan 2 doet hij een check
                     checkCards();
                 }
             }
 
         });
-
 
         function checkCards() {
             const value = $(this).data("card");
@@ -79,7 +75,7 @@ $(function () {
 
         function resetCard() { //haalt de temp array leeg voor de volgende keer, en verwijderd alle classen
             $(".wrong").removeClass("wrong temporary");
-            temporaryCards = []; 
+            temporaryCards = [];
         }
 
         function goodCard() { //verwijderd temporary en voegt good toe met een explode effect, daarna haalt hij de temp array leeg
@@ -92,10 +88,10 @@ $(function () {
             document.location.reload(); //hiermee reload hij de pagina en begint het spel
         })
 
-        function finished () {
+        function finished() {
             if (aantalGoed == 8) {
                 console.log("finished");
-                document.location.href="klaar.html";
+                document.location.href = "klaar.html";
 
             }
         }
