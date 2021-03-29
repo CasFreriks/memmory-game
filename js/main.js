@@ -10,13 +10,13 @@ $(function () {
             "bxl-codepen", "bxl-stack-overflow", "bxl-github"];
 
         //randomize the array
-        cards.sort(() => Math.random() - 0.5);
+        cards.sort(() => Math.random() - 0.5); //randomize de array cards
 
         cards.forEach(function (item) {
-            $(".row").append("<div class='col-md-3'><div class='card' data-card='" + item + "'>" + "<i class='show bx " + item + "'>" + "</div></div>");
+            $(".row").append("<div class='col-md-3'><div class='card' data-card='" + item + "'>" + "<i class='show bx " + item + "'>" + "</div></div>"); //voegt de cards toe aan .row
         });
 
-        function moves() {
+        function moves() { //kijkt hier naar de hoeveelheid moves en haalt dan een ster van je score af
             if (cardMoves == 16) {
                 $(".star-3").css("color", "grey");
             } else if (cardMoves == 25) {
@@ -31,7 +31,7 @@ $(function () {
             cardMoves++;
             moves();
 
-            if (cardMoves == 1) {
+            if (cardMoves == 1) { //als de moves gelijk staan aan 1 zet hij de timer aan
                 let sec = 0;
                 function pad(val) { return val > 9 ? val : "0" + val; }
 
